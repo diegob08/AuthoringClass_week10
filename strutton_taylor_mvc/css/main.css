@@ -1,0 +1,85 @@
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+.img-center {
+	margin: 0 auto;
+}
+
+footer {
+    margin: 50px 0 15px 0;
+    text-align: center;
+    position: absolute;
+    bottom:0;
+    left:0;
+    right:0;
+}
+
+/*my css*/
+
+#mainNav
+{
+	float: right;
+}
+
+#logo
+{
+	padding:0;
+}
+
+#logo img
+{
+	height: 50px;
+	padding:5px 0;
+}
+
+#searchform
+{
+	padding:14px 0;
+}
+
+#emplist
+{
+	list-style: none;
+}
+
+th, td
+{
+	text-align: center;
+}
+
+#empimg
+{
+	padding:10px;
+}
+
+#empname
+{
+	text-align: center;
+	padding: 20px 0;
+}
+
+#detailtable th
+{
+	text-align: right;
+	padding-right: 5px;
+}
+
+#detailtable td
+{
+	text-align: left;
+	padding-left: 5px;
+}
+
+#submit, #str
+{
+	border: 1px solid #9d9d9d;
+	background-color:transparent;
+	color:#9d9d9d;
+}
+
+#str
+{
+	padding-left:5px;
+	padding-right:5px;
+}
