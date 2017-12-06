@@ -12,38 +12,23 @@
 
     const url = '.includes/functions/.php?carModel=' + this.id;
 
-    /*
-
     fetch(url)
-    .then((resp) =>resp.json())
-    .then((data))=> {processResults(data); }
-    .catch(function(error)){
-      console.log(error);
-    });*/
+            .then((resp) => resp.json())
+            .then(({ modelName, pricing, modelDetails, model })) => {
+                  let model = document.querySelector('.modelName').textContent = modelName;
+                  let price = document.querySelector('.priceInfo').innerHTML = pricing;
+                  let desc = document.querySelector('.modelDetails').textContent = modelDetails;
 
-    fetch(url)
-      .then((resp) =>resp.json())
-      .then(({ modelName, pricing, modelDetails }))=>{
-        let model = document.querySelector('.modelName').textContent = modelName;
-        let price = document.querySelector('.priceInfo').innerHTML = pricing;
-        let desc = document.querySelector('.modelDetails').textContent = modelDetails;
-
-        carButtons.forEach(function(car, index) {
-          car.classList.add('nonActive');
-        });
-
-        document.querySelector(`#${data.model}`).classList.remove('nonActive');
-      }
-
-
-      processResults(data); }
-      .catch(function(error)){
-      console.log(error);
-    });
-
-
-  }
-
+                  carButtons.forEach(function(car, index) {
+                    car.classList.add('nonActive');
+                  });
+                  // the backticks are a new ES6 thing called a template string (look it up)
+                  document.querySelector(`#${data.model}`).classList.remove('nonActive');
+                }
+            )
+            .catch(function(error) {
+              console.log(error);
+            });
   // httpRequest.onreadystatechange (on line 19) will call this 4 times. We process / monitor the status of the AJAX call. When it's done (lines 29 and 30) that means our call was successful and we have some data returned from the database to process
 
 
