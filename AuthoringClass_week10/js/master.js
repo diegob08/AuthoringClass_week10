@@ -10,40 +10,25 @@
   // the getCarData function fires every time you click on a car thumbnail; it passes itself into the function (the 'this' keyword referes to the object that called the function => the element clicked on) so that we can use that element's ID attribute as a reference to pass to the query we want to run. We're retrieving a single row from the database where the ID that we pass matches the field we've referenced in the query (in the functions.php file)
   function getCarData() {
 
-    const url = '.includes/functions/.php?carModel=' + this.id;
-
-    /*
+    const url = '.includes/functions.php?carModel=' + this.id;
 
     fetch(url)
-    .then((resp) =>resp.json())
-    .then((data))=> {processResults(data); }
-    .catch(function(error)){
-      console.log(error);
-    });*/
+            .then((resp) => resp.json())
+            .then(({ modelName, pricing, modelDetails, model }) => {
+                  let carModel = document.querySelector('.modelName').textContent = modelName;
+                  let price = document.querySelector('.priceInfo').innerHTML = pricing;
+                  let desc = document.querySelector('.modelDetails').textContent = modelDetails;
 
-    fetch(url)
-      .then((resp) =>resp.json())
-      .then(({ modelName, pricing, modelDetails }))=>{
-        let model = document.querySelector('.modelName').textContent = modelName;
-        let price = document.querySelector('.priceInfo').innerHTML = pricing;
-        let desc = document.querySelector('.modelDetails').textContent = modelDetails;
+                  carButtons.forEach(car => car.classList.add('nonActive'));
 
-        carButtons.forEach(function(car, index) {
-          car.classList.add('nonActive');
-        });
+                  // the backticks are a new ES6 thing called a template string (look it up)
+                  document.querySelector(`#${model}`).classList.remove('nonActive');
+                })
 
-        document.querySelector(`#${data.model}`).classList.remove('nonActive');
-      }
-
-
-      processResults(data); }
-      .catch(function(error)){
-      console.log(error);
-    });
-
-
-  }
-
+            .catch(function(error) {
+              console.log(error);
+            });
+          }
   // httpRequest.onreadystatechange (on line 19) will call this 4 times. We process / monitor the status of the AJAX call. When it's done (lines 29 and 30) that means our call was successful and we have some data returned from the database to process
 
 
